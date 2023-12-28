@@ -37,7 +37,6 @@ export interface Starship {
   styleUrl: './starships.component.scss'
 })
 export class StarshipsComponent implements OnInit {
-  error = ''
   starships$!: Observable<Starship[]>
 
   constructor(private starshipsService: StarshipsService) {}
