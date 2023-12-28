@@ -1,8 +1,8 @@
 import { Component, Input } from '@angular/core';
 import { Starship } from "../../app/starships/starships.component";
-import {DatePipe, NgClass, NgForOf, NgIf} from "@angular/common";
-import {FormsModule} from "@angular/forms";
-import {ModalComponent} from "../modal/modal.component";
+import { DatePipe, NgClass, NgForOf, NgIf } from "@angular/common";
+import { FormsModule } from "@angular/forms";
+import { ModalComponent } from "../modal/modal.component";
 
 export interface ModalData {
   name: string
@@ -30,7 +30,7 @@ export class TableComponent {
     listItem: [],
   }
 
-  @Input({ required: true }) starships: Starship[] = []
+  @Input({ required: true }) starships: Starship[] | null = []
 
 
   setOpenModal(modalData: ModalData) {

@@ -1,8 +1,8 @@
-import {Component, OnInit} from '@angular/core';
-import {HttpClient} from "@angular/common/http";
-import {NgClass, NgIf} from "@angular/common";
-import {TableComponent} from "../../app/table/table.component";
-
+import { Component, OnInit } from '@angular/core';
+import { AsyncPipe, NgClass, NgIf } from "@angular/common";
+import { TableComponent } from "../../app/table/table.component";
+import { StarshipsService } from "../services/starships.service";
+import { Observable } from "rxjs";
 export interface Starship {
   MGLT: string;
   cargo_capacity: string;
@@ -24,13 +24,6 @@ export interface Starship {
   url: string;
 }
 
-interface StarshipsResponse {
- count: number
-  next: string | null
-  previous: string | null
-  results: Starship[]
-}
-
 @Component({
   selector: 'app-starships',
   standalone: true,
@@ -38,25 +31,24 @@ interface StarshipsResponse {
     NgClass,
     NgIf,
     TableComponent,
+    AsyncPipe,
   ],
   templateUrl: './starships.component.html',
   styleUrl: './starships.component.scss'
 })
-export class StarshipsComponent implements OnInit{
+export class StarshipsComponent implements OnInit {
+  error = ''
+  starships$!: Observable<Starship[]>
 
-  starships: Starship[] = []
-
-  constructor(private http: HttpClient) {}
+  constructor(private starshipsService: StarshipsService) {}
 
   ngOnInit() {
+    this.starships$ = this.starshipsService.starships$
     this.getStarships()
   }
 
   getStarships(page?: string) {
-    this.http.get<StarshipsResponse>(`https://swapi.py4e.com/api/starships/?page=${page ?? 1}`).subscribe(res => {
-      this.starships = res.results
-      console.log(res.results)
-    })
+    this.starshipsService.getStarships(page)
   }
 
 }

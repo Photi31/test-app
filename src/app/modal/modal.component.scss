@@ -1,5 +1,6 @@
 .wrapper {
-  background-color: rgba(0, 0, 0, .3);
+  background-color: rgba(0, 0, 0, .8);
+
   position: absolute;
   top: 0;
   bottom: 0;
@@ -11,8 +12,19 @@
 }
 
 .modal {
+  box-shadow: 0 0 15px rgba(256,256,256, .6);
   background-color: white;
   width: 600px;
   padding: 40px;
   border-radius: 20px;
+
+  h1 {
+    text-align: center;
+    margin-top: 0;
+  }
+
+  li {
+    font-size: 18px;
+    line-height: 24px;
+  }
 }

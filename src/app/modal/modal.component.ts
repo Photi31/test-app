@@ -1,6 +1,6 @@
-import {Component, EventEmitter, Input, Output} from '@angular/core';
-import {ModalData} from "../../app/table/table.component";
-import {NgForOf, TitleCasePipe} from "@angular/common";
+import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { ModalData } from "../../app/table/table.component";
+import { NgForOf, TitleCasePipe } from "@angular/common";
 
 @Component({
   selector: 'app-modal',

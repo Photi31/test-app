@@ -1,6 +1,10 @@
 <div [ngClass]="['starships']">
-  <app-table *ngIf="!!starships.length; else elseBlock" [starships]="starships" ></app-table>
-  <ng-template #elseBlock>
-    <span>По вашему запросу ни чего не найдено</span>
+  <div class="error" *ngIf="!!error; else table">{{ error }}</div>
+  <ng-template #table>
+    <app-table *ngIf="!!starships$; else elseBlock" [starships]="starships$ | async" ></app-table>
+    <ng-template #elseBlock>
+      <span>По вашему запросу ни чего не найдено</span>
+    </ng-template>
   </ng-template>
+
 </div>
