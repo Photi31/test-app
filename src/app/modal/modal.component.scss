@@ -1,0 +1,18 @@
+.wrapper {
+  background-color: rgba(0, 0, 0, .3);
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal {
+  background-color: white;
+  width: 600px;
+  padding: 40px;
+  border-radius: 20px;
+}

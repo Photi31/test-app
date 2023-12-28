@@ -1,0 +1,8 @@
+<div class="wrapper" (click)="setCloseModal()">
+  <div class="modal">
+    <h1>{{ modalData.name | titlecase }}</h1>
+    <ul>
+      <li *ngFor="let item of modalData.listItem">{{ item }}</li>
+    </ul>
+  </div>
+</div>

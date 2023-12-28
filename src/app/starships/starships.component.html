@@ -1,0 +1,6 @@
+<div [ngClass]="['starships']">
+  <app-table *ngIf="!!starships.length; else elseBlock" [starships]="starships" ></app-table>
+  <ng-template #elseBlock>
+    <span>По вашему запросу ни чего не найдено</span>
+  </ng-template>
+</div>
