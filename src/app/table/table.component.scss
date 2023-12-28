@@ -11,7 +11,7 @@
   &_item {
     table-layout: auto;
     width: 100%;
-    max-width: 250px;
+    min-width: 150px;
     padding: 20px 25px;
     white-space: nowrap;
     display: flex;
@@ -28,8 +28,8 @@
     line-height: 1.2;
 
     td {
+      table-layout: auto;
       justify-content: center;
-      //align-items: center;
     }
   }
 
@@ -42,10 +42,6 @@
       border-bottom: 1px solid #e8e5e5;
     }
   }
-}
-
-.wide {
-  min-width: 250px;
 }
 
 .click {

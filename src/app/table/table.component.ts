@@ -31,6 +31,7 @@ export class TableComponent {
   }
 
   @Input({ required: true }) starships: Starship[] | null = []
+  @Input({ required: true }) tableHeadItem: string[] | null = []
 
 
   setOpenModal(modalData: ModalData) {

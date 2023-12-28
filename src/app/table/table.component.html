@@ -1,40 +1,26 @@
 <table [ngClass]="['table']">
   <thead [ngClass]="['table_head']">
     <tr [ngClass]="['table_head-row']">
-      <td [ngClass]="['table_item', 'wide']">Название</td>
-      <td [ngClass]="['table_item', 'wide']">Модель</td>
-      <td [ngClass]="['table_item', 'wide']">Класс корабля</td>
-      <td [ngClass]="['table_item']">Длина</td>
-      <td [ngClass]="['table_item', 'wide']">Грузоподъемность</td>
-      <td [ngClass]="['table_item', 'wide']">Max скорость</td>
-      <td [ngClass]="['table_item', 'wide']">Рейтинг гипердвигателя</td>
-      <td [ngClass]="['table_item']">Команда</td>
-      <td [ngClass]="['table_item']">Пассажиры</td>
-      <td [ngClass]="['table_item']">Пилоты</td>
-      <td [ngClass]="['table_item']">Фильмы</td>
-      <td [ngClass]="['table_item', 'wide']">Предприятие</td>
-      <td [ngClass]="['table_item']">Дата создания</td>
-      <td [ngClass]="['table_item']">Гарантия</td>
-      <td [ngClass]="['table_item', 'wide']">Стоимость</td>
+      <td [ngClass]="['table_item']" *ngFor="let item of tableHeadItem">{{ item }}</td>
     </tr>
   </thead>
   <tbody [ngClass]="['table_body']">
   <tr *ngFor="let ship of starships" [ngClass]="['table_body-row']">
-    <td [ngClass]="['table_item', 'wide']">{{ ship.name }}</td>
-    <td [ngClass]="['table_item', 'wide']">{{ ship.model }}</td>
-    <td [ngClass]="['table_item', 'wide']">{{ ship.starship_class }}</td>
+    <td [ngClass]="['table_item']">{{ ship.name }}</td>
+    <td [ngClass]="['table_item']">{{ ship.model }}</td>
+    <td [ngClass]="['table_item']">{{ ship.starship_class }}</td>
     <td [ngClass]="['table_item']">{{ ship.length }}</td>
-    <td [ngClass]="['table_item', 'wide']">{{ ship.cargo_capacity }}</td>
-    <td [ngClass]="['table_item', 'wide']">{{ ship.max_atmosphering_speed }}</td>
-    <td [ngClass]="['table_item', 'wide']">{{ ship.hyperdrive_rating }}</td>
+    <td [ngClass]="['table_item']">{{ ship.cargo_capacity }}</td>
+    <td [ngClass]="['table_item']">{{ ship.max_atmosphering_speed }}</td>
+    <td [ngClass]="['table_item']">{{ ship.hyperdrive_rating }}</td>
     <td [ngClass]="['table_item']">{{ ship.crew }}</td>
     <td [ngClass]="['table_item']">{{ ship.passengers }}</td>
     <td [ngClass]="{'table_item': true, 'click': ship.pilots.length > 0}" (click)="setOpenModal({name: 'Пилоты', listItem: ship.pilots})" id="pilots">{{ ship.pilots.length > 0 ? ship.pilots.length : '-' }}</td>
     <td [ngClass]="{'table_item': true, 'click': ship.films.length > 0}" (click)="setOpenModal({name: 'Фильмы', listItem: ship.films})" id="films">{{ ship.films.length > 0 ? ship.films.length : '-' }}</td>
-    <td [ngClass]="['table_item', 'wide']">{{ ship.manufacturer }}</td>
+    <td [ngClass]="['table_item']">{{ ship.manufacturer }}</td>
     <td [ngClass]="['table_item']">{{ ship.created | date }}</td>
     <td [ngClass]="['table_item']">{{ ship.consumables }}</td>
-    <td [ngClass]="['table_item', 'wide']">{{ ship.cost_in_credits }}</td>
+    <td [ngClass]="['table_item']">{{ ship.cost_in_credits }}</td>
   </tr>
   </tbody>
 </table>

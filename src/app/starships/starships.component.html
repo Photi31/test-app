@@ -1,5 +1,9 @@
 <div [ngClass]="['starships']">
-    <app-table *ngIf="!!starships$; else elseBlock" [starships]="starships$ | async" ></app-table>
+    <app-table
+      *ngIf="!!starships$; else elseBlock"
+      [starships]="starships$ | async"
+      [tableHeadItem]="tableHeadItem"
+    ></app-table>
     <ng-template #elseBlock>
       <span>По вашему запросу ни чего не найдено</span>
     </ng-template>

@@ -37,12 +37,29 @@ export interface Starship {
   styleUrl: './starships.component.scss'
 })
 export class StarshipsComponent implements OnInit {
+  tableHeadItem: string[] = [
+    'Название',
+    'Модель',
+    'Класс корабля',
+    'Длина',
+    'Грузоподъемность',
+    'Max скорость',
+    'Рейтинг гипердвигателя',
+    'Команда',
+    'Пассажиры',
+    'Пилоты',
+    'Фильмы',
+    'Предприятие',
+    'Дата создания',
+    'Гарантия',
+    'Стоимость'
+  ]
   starships$!: Observable<Starship[]>
 
   constructor(private starshipsService: StarshipsService) {}
 
   ngOnInit() {
-    this.starships$ = this.starshipsService.starships$
+    this.starships$ = this.starshipsService.getStarships()
     this.getStarships()
   }
 
