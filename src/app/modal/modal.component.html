@@ -1,11 +1,8 @@
 <div class="wrapper" (click)="setCloseModal()">
   <div class="modal">
     <h1>{{ modalData.name | titlecase }}</h1>
-    <div>Name: {{ modalData.item?.name }}</div>
-    <div>Birth day: {{ modalData.item?.birth_year }}</div>
-    <div>Gender: {{ modalData.item?.gender }}</div>
-    <div>Height: {{ modalData.item?.height }}</div>
-    <div>Mass: {{ modalData.item?.mass }}</div>
-    <div>Home world: {{ modalData.item?.homeworld }}</div>
+    <div *ngFor="let data of Object.entries(modalData.item)">
+      <div><span>{{ data[0] | titlecase}}</span>: {{ data[1] }}</div>
+    </div>
   </div>
 </div>

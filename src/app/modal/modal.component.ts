@@ -1,7 +1,7 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { ModalData } from "../../app/table/table.component";
-import {JsonPipe, KeyValuePipe, NgForOf, NgIf, TitleCasePipe} from "@angular/common";
-import { People } from "../starships/ship/ship.component";
+import { JsonPipe, KeyValuePipe, NgForOf, NgIf, TitleCasePipe } from "@angular/common";
+import { DataResponse } from "../services/data.service";
 
 @Component({
   selector: 'app-modal',
@@ -19,7 +19,7 @@ import { People } from "../starships/ship/ship.component";
 export class ModalComponent {
   @Input() modalData: ModalData = {
     name: '',
-    item: {} as People,
+    item: {} as DataResponse,
   }
 
   @Output() setOpenModal = new EventEmitter()

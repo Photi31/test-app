@@ -1,28 +1,12 @@
-import {Component, Input, OnInit} from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { Starship } from "../../entities/starships";
-import {AsyncPipe, DatePipe, JsonPipe, NgClass, NgIf} from "@angular/common";
-import {ModalData} from "../../table/table.component";
-import {ModalComponent} from "../../modal/modal.component";
-import {PeopleService} from "../../services/people.service";
-
-export interface People {
-  birth_year: string
-  eye_color: string
-  films: string[]
-  gender: string
-  hair_color: string
-  height: string
-  homeworld: string
-  mass: string
-  name: string
-  skin_color: string
-  created: string
-  edited: string
-  species: string[]
-  starships: string[]
-  url: string
-  vehicles: string[]
-}
+import { AsyncPipe, DatePipe, JsonPipe, NgClass, NgIf } from "@angular/common";
+import { ModalData } from "../../table/table.component";
+import { ModalComponent } from "../../modal/modal.component";
+import { DataService } from "../../services/data.service";
+import { People } from "../../entities/people";
+import { Film } from "../../entities/film";
+import { forkJoin } from "rxjs";
 
 @Component({
   selector: 'app-ship',
@@ -41,6 +25,7 @@ export interface People {
 })
 export class ShipComponent implements OnInit{
   pilot!: People
+  film!: Film
 
   openModal = false
   modalData: ModalData = {
@@ -49,16 +34,19 @@ export class ShipComponent implements OnInit{
   }
   @Input({required: true}) ship!: Starship
 
-  constructor(private peopleService: PeopleService) {}
+  constructor(private dataService: DataService) {}
 
   ngOnInit(): void {
     if (this.ship.pilots[0]) {
-      this.getPeople()
+      this.getData()
     }
   }
-  getPeople() {
-    this.peopleService.getPeople(this.ship.pilots[0]).subscribe(res => {
-      this.pilot = res
+  getData() {
+    const pilot = this.dataService.getData(this.ship.pilots[0])
+    const film = this.dataService.getData(this.ship.films[0])
+    forkJoin([pilot, film]).subscribe(res => {
+      this.pilot = res[0] as People
+      this.film = res[1] as Film
       console.log(res)
     })
   }
