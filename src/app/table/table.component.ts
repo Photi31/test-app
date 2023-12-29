@@ -3,11 +3,12 @@ import { AsyncPipe, DatePipe, NgClass, NgForOf, NgIf } from "@angular/common";
 import { FormsModule } from "@angular/forms";
 import { ModalComponent } from "../modal/modal.component";
 import { Starship } from "../entities/starships";
-import { People, ShipComponent } from "../starships/ship/ship.component";
+import { ShipComponent } from "../starships/ship/ship.component";
+import { DataResponse } from "../services/data.service";
 
 export interface ModalData {
   name: string
-  item: People | null
+  item: DataResponse
 }
 
 @Component({

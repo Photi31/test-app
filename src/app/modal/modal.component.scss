@@ -23,8 +23,16 @@
     margin-top: 0;
   }
 
-  li {
+  div {
     font-size: 18px;
     line-height: 24px;
+    white-space: nowrap;
+    overflow-x: hidden;
+    text-overflow: ellipsis;
+
+    span {
+      font-weight: bold;
+
+    }
   }
 }
