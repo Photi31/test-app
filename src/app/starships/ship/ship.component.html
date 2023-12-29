@@ -1,0 +1,19 @@
+<tr  [ngClass]="['ship-row']">
+  <td >{{ ship.name }}</td>
+  <td >{{ ship.model }}</td>
+  <td >{{ ship.starship_class }}</td>
+  <td >{{ ship.length }}</td>
+  <td >{{ ship.cargo_capacity }}</td>
+  <td >{{ ship.max_atmosphering_speed }}</td>
+  <td >{{ ship.hyperdrive_rating }}</td>
+  <td >{{ ship.crew }}</td>
+  <td >{{ ship.passengers }}</td>
+  <td [ngClass]="{'click': ship.pilots.length > 0}" (click)="setOpenModal({name: 'Пилот', item: pilot})">{{ pilot ? pilot.name : '-' }}</td>
+  <td [ngClass]="{'click': ship.films.length > 0}" >{{ ship.films.length > 0 ? ship.films.length : '-' }}</td>
+  <td >{{ ship.manufacturer }}</td>
+  <td >{{ ship.created | date }}</td>
+  <td >{{ ship.consumables }}</td>
+  <td >{{ ship.cost_in_credits }}</td>
+</tr>
+<app-modal *ngIf="openModal" (setOpenModal)="setCloseModal()" [modalData]="modalData"></app-modal>
+

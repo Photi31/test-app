@@ -1,12 +1,13 @@
 import { Component, Input } from '@angular/core';
-import { Starship } from "../../app/starships/starships.component";
-import { DatePipe, NgClass, NgForOf, NgIf } from "@angular/common";
+import { AsyncPipe, DatePipe, NgClass, NgForOf, NgIf } from "@angular/common";
 import { FormsModule } from "@angular/forms";
 import { ModalComponent } from "../modal/modal.component";
+import { Starship } from "../entities/starships";
+import { People, ShipComponent } from "../starships/ship/ship.component";
 
 export interface ModalData {
   name: string
-  listItem: string[]
+  item: People | null
 }
 
 @Component({
@@ -18,29 +19,20 @@ export interface ModalData {
     DatePipe,
     FormsModule,
     ModalComponent,
-    NgIf
+    NgIf,
+    ShipComponent,
+    AsyncPipe
   ],
   templateUrl: './table.component.html',
   styleUrl: './table.component.scss'
 })
 export class TableComponent {
-  openModal = false
-  modalData: ModalData = {
-    name: '',
-    listItem: [],
-  }
 
   @Input({ required: true }) starships: Starship[] | null = []
   @Input({ required: true }) tableHeadItem: string[] | null = []
 
-
-  setOpenModal(modalData: ModalData) {
-    this.openModal = true
-    this.modalData = modalData
-    console.log(modalData)
+  constructor() {
+    console.log(this.starships)
   }
 
-  setCloseModal() {
-    this.openModal = false
-  }
 }
